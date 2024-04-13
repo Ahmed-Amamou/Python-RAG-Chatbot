@@ -1,0 +1,5 @@
+chroma_*
+chroma
+.DS_Store
+/venv
+python.exe.stackdump
