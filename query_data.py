@@ -1,9 +1,10 @@
 import argparse
 from dataclasses import dataclass
-from langchain.vectorstores.chroma import Chroma
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.chat_models import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
+from langchain_chroma import Chroma
+from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
 import os
 
 CHROMA_PATH = "chroma"
@@ -24,10 +25,9 @@ def main():
     parser.add_argument("query_text", type=str, help="The query text.")
     args = parser.parse_args()
     query_text = args.query_text
-    API_key = os.environ.get('OPENAI_API_KEY')
     
     # Prepare the DB.
-    embedding_function = OpenAIEmbeddings(openai_api_key=API_key)
+    embedding_function = OpenAIEmbeddings()
     db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 
     # Search the DB.
@@ -37,12 +37,13 @@ def main():
         return
 
     context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
+    print(f"retrieved DATA for context\n: {context_text}")
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=context_text, question=query_text)
     print(prompt)
 
-    model = ChatOpenAI(openai_api_key=API_key, model_name="gpt-3.5-turbo", model_type="davinci")
-    response_text = model.predict(prompt)
+    model = ChatOpenAI(model_name="gpt-3.5-turbo")
+    response_text = model.invoke(prompt).content
 
     sources = [doc.metadata.get("source", None) for doc, _score in results]
     formatted_response = f"Response: {response_text}\nSources: {sources}"
