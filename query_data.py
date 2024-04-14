@@ -44,7 +44,11 @@ def main():
     prompt = prompt_template.format(context=context_text, question=query_text)
     # print(prompt)
 
+<<<<<<< HEAD
     chat = ChatOpenAI()
+=======
+    chat =  ChatOpenAI(temperature=0.5)
+>>>>>>> 2ecb812 (fixed secret blockage from github)
     response_text = chat.invoke(prompt)
     print(f"Response: {response_text.content}")
     sources = [doc.metadata.get("source", None) for doc, _score in results]

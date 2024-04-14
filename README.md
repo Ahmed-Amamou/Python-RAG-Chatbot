@@ -16,7 +16,7 @@ python create_database.py
 Query the Chroma DB.
 
 ```python
-python query_data.py "How does Alice meet the Mad Hatter?"
+python query_data.py "What is Abdestar favorite color?"
 ```
 
 - Set up OPENAI_API_KEY as environment variable for this to work ! 
