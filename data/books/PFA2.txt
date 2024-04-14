@@ -1,0 +1,69 @@
+
+!! Besoins & diagrammes & description textuelle!!
+
+Les besoins fonctionnels : 
+ *L'utilisateur (ou l'administrateur) doit pouvoir s'inscrire à un compte en fournissant son nom, son adresse e-mail et un mot de passe.
+ *Le système doit permettre aux utilisateurs de se connecter à leur compte à l'aide de leur nom d'utilisateur et de leur mot de passe.
+ *L'utilisateur doit pouvoir chercher des informations dans le système selon plusieurs catégories.
+ *Le système doit fournir les informations aux utilisateurs lors de ses demandes
+ *L'administrateur doit pouvoir ajouter(ou modifier) des données dans le système.
+ *L'administrateur doit pouvoir gérer les utilisateurs qui utilise le système.
+ *Le système doit fournir la possibilité de gérer les données et les utilisateurs à l'administrateur.
+ *Les utilisateurs doivent pouvoir signaler tout contenu inapproprié ou non conforme aux directives de la communauté.
+ *Le système doit permettre aux utilisateurs de noter la pertinence et la qualité des réponses fournies par d'autres utilisateurs.
+
+Les besoins non fonctionnels :
+
+ *Le système doit repondre en temps raisonable aux requettes des utilisateurs.
+(Evolutivité)
+ *Le système doit être évolutif pour permettre l'ajout de nouvelles fonctionnalités à l'avenir sans nécessiter de modifications majeures de l'architecture.
+(Sécurité): 
+ *Les données des utilisateurs doit etre crypté l'hors de sauvegarde dans la base des données. 
+ *Le système doit repondre aux requettes des utilisateurs arrivant de l'application web ou mobile.
+ *Le système doit être compatible avec différents navigateurs web et appareils mobiles pour garantir 
+	une expérience utilisateur uniforme sur toutes les plateformes.
+
+
+-diviser Admin & user;
+------------------------------------------
+
+CHATBOT en details!:
+1. Réponses aux questions:
+ *Le chatbot doit pouvoir comprendre les questions formulées de différentes 
+	manières et reformuler les questions ambiguës pour obtenir des précisions.
+ *Le chatbot doit fournir des réponses claires, concises et précises, 
+	en s'appuyant sur une base de données de connaissances exhaustive et constamment mise à jour.
+Exemples : - Où se trouve la salle X ?
+	   - Quand est mon prochain examen ?
+(Conversation & historique)
+
+
+
+2. Aide aux devoirs et aux projets:
+
+ *Le chatbot peut aider les étudiants à trouver des informations et des ressources pour leurs devoirs et projets.
+	Il peut suggérer des articles, des livres, des sites Web et d'autres sources pertinentes. (ou même des chaines youtubes..) 
+
+3. Soutien et motivation:
+
+ *Le chatbot peut offrir un soutien et une motivation aux étudiants en difficulté.
+ *Il peut les encourager à persévérer et à ne pas abandonner.
+
+4. Orientation et mentorat:
+
+ *Le chatbot peut aider les étudiants à choisir leur orientation scolaire et professionnelle(Exemple: GLID ou NTS).
+ *Il peut leur fournir des informations sur les différentes filières et les métiers possibles(Software Engineering - QA Engineering, Cloud Engineer..).
+ *Le chatbot peut également les mettre en relation avec des mentors ou des conseillers qui peuvent les guider dans leurs choix.(Mme Ahlem, Mr Yassine..)
+
+6. Personnalisation(Optionnel):
+
+ *Le chatbot peut être personnalisé pour répondre aux besoins spécifiques de chaque étudiant.
+ *Il peut apprendre les préférences de chaque utilisateur et s'adapter à son style d'apprentissage.
+7. Interface utilisateur:
+
+ *L'interface utilisateur du chatbot doit être simple, intuitive et conviviale.
+ *Elle doit être accessible aux étudiants ayant des besoins spécifiques.(With speach to text for example..)
+8. Disponibilité:
+
+ *Le chatbot doit être disponible 24h/24 et 7j/7.
+ *Il doit pouvoir répondre aux questions des étudiants en temps réel.

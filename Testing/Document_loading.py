@@ -51,14 +51,17 @@ class CustomDocumentLoader(BaseLoader):
                     metadata={"line_number": line_number, "source": self.file_path},
                 )
                 line_number += 1
-with open("data/books/meow.txt", "w", encoding="utf-8") as f:
-    quality_content = "meow meow🐱 \n meow meow🐱 \n meow😻😻"
-    f.write(quality_content)
+# with open("data/books/meow.txt", "w", encoding="utf-8") as f:
+#     quality_content = "meow meow🐱 \n meow meow🐱 \n meow😻😻"
+#     f.write(quality_content)
 
-loader = CustomDocumentLoader("data/books/meow.txt")
+loader = CustomDocumentLoader("data/books/PFA2.txt")
 
 
 ## Test out the lazy load interface
+for doc in loader.lazy_load():
+    print(doc)
+    
 
 
 
