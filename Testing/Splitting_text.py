@@ -1,21 +1,17 @@
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings
+
+loader = PyPDFLoader("data/books/Tunisia.pdf")
+pages = loader.load_and_split()
+
+print(type(pages[0]))
+# print("metadata:") 
+# print(pages[1].metadata)
 
 
-
-# This is a long document we can split up.
-with open("data/books/PFA2.txt") as f:
-    pfa2 = f.read()
-
-
-text_splitter = RecursiveCharacterTextSplitter(
-    # Set a really small chunk size, just to show.
-    chunk_size=150,
-    chunk_overlap=20,
-    length_function=len,
-    is_separator_regex=False,
-)
-    
-texts = text_splitter.create_documents([pfa2])
-print(texts[0])
-print(texts[1])
-print(texts[2])
+# faiss_index = FAISS.from_documents(pages, OpenAIEmbeddings())
+# docs = faiss_index.similarity_search("demographic", k=2)
+# for doc in docs:
+#     with open("output.txt", "w") as f:
+#         f.write(str(doc.metadata["page"]) + ": " + doc.page_content[:300])

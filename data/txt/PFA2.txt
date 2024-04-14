@@ -1,3 +1,4 @@
+#PROJET STUDENT-Helper 
 
 !! Besoins & diagrammes & description textuelle!!
 
@@ -67,3 +68,6 @@ Exemples : - Où se trouve la salle X ?
 
  *Le chatbot doit être disponible 24h/24 et 7j/7.
  *Il doit pouvoir répondre aux questions des étudiants en temps réel.
+
+
+ Notre encadrante de projet est Mme Besma.
