@@ -47,8 +47,7 @@ def main():
     model = ChatOpenAI(model_name="gpt-3.5-turbo")
     response_text = model.invoke(prompt).content
 
-    chat = ChatOpenAI()
-    response_text = chat.invoke(prompt)
+    response_text = model.invoke(prompt)
     print(f"Response: {response_text.content}")
     sources = [doc.metadata.get("source", None) for doc, _score in results]
     formatted_response = f"Response: {response_text}\nSources: {sources}"
