@@ -5,6 +5,8 @@ from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_openai import OpenAIEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
+
 import os
 
 CHROMA_PATH = "chroma"
@@ -45,6 +47,9 @@ def main():
     model = ChatOpenAI(model_name="gpt-3.5-turbo")
     response_text = model.invoke(prompt).content
 
+    chat =  ChatOpenAI(temperature=0.5)
+    response_text = chat.invoke(prompt)
+    print(f"Response: {response_text.content}")
     sources = [doc.metadata.get("source", None) for doc, _score in results]
     formatted_response = f"Response: {response_text}\nSources: {sources}"
     print(formatted_response)
