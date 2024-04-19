@@ -47,7 +47,7 @@ def main():
     model = ChatOpenAI(model_name="gpt-3.5-turbo")
     response_text = model.invoke(prompt).content
 
-    chat =  ChatOpenAI(temperature=0.5)
+    chat = ChatOpenAI()
     response_text = chat.invoke(prompt)
     print(f"Response: {response_text.content}")
     sources = [doc.metadata.get("source", None) for doc, _score in results]
