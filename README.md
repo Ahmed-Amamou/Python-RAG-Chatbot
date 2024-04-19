@@ -1,4 +1,4 @@
-# RAG - Costum CHATBOT with Python
+# RAG - Custom CHATBOT with Python
 
 Install dependencies.
 
