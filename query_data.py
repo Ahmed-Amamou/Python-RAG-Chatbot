@@ -11,13 +11,13 @@ import os
 
 CHROMA_PATH = "chroma"
 PROMPT_TEMPLATE = """
-Answer the question based only on the following context:
+Answer the question based on the following context if it has any relevant information to answer the question. Otherwise, answer the question based on your knowledge.:
 
 {context}
 
 ---
 
-Answer the question based on the above context: {question}
+Answer the question based on the above context,Don't EVER say things like(the context mentions, based on the given context ..) just answer directly to the query: {question}
 """
 
 
@@ -36,22 +36,20 @@ def main():
     results = db.similarity_search_with_relevance_scores(query_text, k=3)
     if len(results) == 0 or results[0][1] < 0.7:
         print(f"Unable to find matching results.")
-        return
+        
 
     context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
-    print(f"retrieved DATA for context\n: {context_text}")
+    # print(f"retrieved DATA for context\n: {context_text}")
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=context_text, question=query_text)
-    print(prompt)
+    # print(prompt)
 
-    model = ChatOpenAI(model_name="gpt-3.5-turbo")
-    response_text = model.invoke(prompt).content
-
-    response_text = model.invoke(prompt)
+    chat = ChatOpenAI(temperature=0.3)
+    response_text = chat.invoke(prompt)
     print(f"Response: {response_text.content}")
     sources = [doc.metadata.get("source", None) for doc, _score in results]
-    formatted_response = f"Response: {response_text}\nSources: {sources}"
-    print(formatted_response)
+    # formatted_response = f"Response: {response_text}\nSources: {sources}"
+    print(f"sources:\n {sources}")
 
 
 if __name__ == "__main__":

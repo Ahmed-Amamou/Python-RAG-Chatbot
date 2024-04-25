@@ -4,11 +4,12 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 from langchain_openai import OpenAIEmbeddings
 from langchain_chroma import Chroma
+from langchain_community.document_loaders import PyPDFDirectoryLoader
 import os
 import shutil
 
 CHROMA_PATH = "chroma"
-DATA_PATH = "data/md"
+DATA_PATH = "data/pdf"
 
 
 def main():
@@ -22,22 +23,23 @@ def generate_data_store():
 
 
 def load_documents():
-    loader = DirectoryLoader(DATA_PATH, glob="*.md", loader_cls=TextLoader)
+    # loader = DirectoryLoader(DATA_PATH, glob="*.md", loader_cls=TextLoader)
+    loader = PyPDFDirectoryLoader(DATA_PATH)
     documents = loader.load()
     return documents
 
 
 def split_text(documents: list[Document]):
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=300,
-        chunk_overlap=50,
+        chunk_size=1200,
+        chunk_overlap=300,
         length_function=len,
         add_start_index=True,
     )
     chunks = text_splitter.split_documents(documents)
-    print(f"Split {len(documents)} documents into {len(chunks)} chunks.")
+    # print(f"Split {len(documents)} documents into {len(chunks)} chunks.")
 
-    document = chunks[1]
+    document = chunks[0]
     print(document.page_content)
     print(document.metadata)
 
@@ -58,4 +60,5 @@ def save_to_chroma(chunks: list[Document]):
 
 if __name__ == "__main__":
     main()
-    
+
+
