@@ -5,15 +5,15 @@ from langchain.evaluation import load_evaluator
 def main():
     # Get embedding for a word.
     embedding_function = OpenAIEmbeddings()
-    vector = embedding_function.embed_query("apple")
+    vector = embedding_function.embed_query("Bessma")
     
 
     # Compare vector of two words
     evaluator = load_evaluator("pairwise_embedding_distance")
-    words = ("Trump", "Phone Charger")
+    words = ("Ahmed", "girl")
     x = evaluator.evaluate_string_pairs(prediction=words[0], prediction_b=words[1])
     with open("output.txt", "w") as f:
-        f.write(f"Vector for 'apple': {vector}")
+        f.write(f"Vector for 'Bessma': {vector}")
         f.write(f"\n\n:")
         f.write(f"Vector length: {len(vector)}")
         f.write(f"\n\n:")

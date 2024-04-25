@@ -33,7 +33,7 @@ def main():
     db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 
     # Search the DB.
-    results = db.similarity_search_with_relevance_scores(query_text, k=5)
+    results = db.similarity_search_with_relevance_scores(query_text, k=3)
     if len(results) == 0 or results[0][1] < 0.7:
         print(f"Unable to find matching results.")
         
@@ -44,7 +44,7 @@ def main():
     prompt = prompt_template.format(context=context_text, question=query_text)
     # print(prompt)
 
-    chat = ChatOpenAI()
+    chat = ChatOpenAI(temperature=0.3)
     response_text = chat.invoke(prompt)
     print(f"Response: {response_text.content}")
     sources = [doc.metadata.get("source", None) for doc, _score in results]
